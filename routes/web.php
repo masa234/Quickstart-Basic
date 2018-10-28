@@ -31,7 +31,7 @@ Route::post( '/task', function ( Request $request ) {
         'name' => 'required|max:255',
     ] );
 
-    // validation失敗時
+    // validation失敗
     if ( $validator->fails() ) {
         return redirect( '/' )
             ->withInput() // 以前の入力
