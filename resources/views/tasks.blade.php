@@ -4,6 +4,7 @@
 @section( 'content' )
 
     <div class="panel-body">
+        @include( 'common.errors' )
         
         <!-- タスク投稿フォーム -->
         <form action="/task" method="POST" class="form-horizontal">
@@ -33,18 +34,19 @@
                 現在のタスク
             </div>          
             @foreach ($tasks as $task)
-                <tr>
                     <!-- タスク名 -->
-                    <td class="table-text">
-                        <div>{{ $task->name }}</div>
-                    </td>
-
-                    <td>
-                        <!-- TODO: 削除ボタン -->
-                    </td>
-                </tr>
+                <div class="card"> 
+                    <div class="task-name">
+                        {{ $task->name }}
+                    </div>
+                    <!-- TODO: 削除ボタン -->
+                    <form action="/task/{{ $task->id }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                    
+                        <button class="btn btn-danger" type="submit">削除する</button>
+                    </form>
+                </div>
             @endforeach
-
-
     @endif      
 
