@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 // 全タスク表示
 Route::get( '/', function () {  
     // 全てのtaskを昇順で取得
-    $tasks = \App\Task::orderBy( 'created_at', 'asc' )->get();
+    $tasks = \App\Task::orderBy( 'created_at', 'desc' )->get();
 
     return view( 'tasks', [
         'tasks' => $tasks

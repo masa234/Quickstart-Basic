@@ -28,12 +28,23 @@
         </form>
     </div>
 
+    @if (session('message'))
+
+    <div class="alert alert-success">
+
+        {{ session('message') }}
+
+    </div>
+
+    @endif
+
+
     @if ( count( $tasks ) > 0 ) 
         <div class="panel panel-info">
             <div class="panel-heading">
                 現在のタスク
             </div>          
-            @foreach ($tasks as $task)
+            @foreach ( $tasks as $task )
                     <!-- タスク名 -->
                 <div class="card"> 
                     <div class="task-name">
